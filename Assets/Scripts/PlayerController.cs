@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     public float speed = 20;
     public float turnSpeed;
     public float horizontalInput;
+    public float forwardInput;
     void Start()
     {
         
@@ -17,7 +18,8 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         horizontalInput = Input.GetAxis("Horizontal");
-        transform.Translate(Vector3.forward * Time.deltaTime * speed);
-        transform.Translate(Vector3.forward * Time.deltaTime * turnSpeed);
+        forwardInput = Input.GetAxis("Vertical");
+        transform.Translate(Vector3.forward * Time.deltaTime * speed * forwardInput);
+        transform.Translate(Vector3.forward * Time.deltaTime * turnSpeed * horizontalInput);
     }
 }
